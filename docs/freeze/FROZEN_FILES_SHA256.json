@@ -1,0 +1,14 @@
+{
+  "schema": "eros-governance-freeze-v1",
+  "decision_id": "EROS-OWNER-2026-10-23-01",
+  "date": "2026-10-23",
+  "immutable": {
+    "docs/freeze/OWNER_DECISION_2026-10-23.md": "f26e24cdb89260dcac2540e56bd8512198ed93e0c8aebcc243834d5870dd427c",
+    "docs/freeze/CANONICAL_ARCHITECTURE_BASELINE_v1_0.md": "ab2d6acc87578602f1a791d91d032a4ef6a1f7282f0dd6119705d82407021a38",
+    "docs/references/STAGE2_PARENT_2026-10-23.md": "e587ad6baefa63333e67480dd00b343f8a5ee4d3c12a6d5ae21ec3031328c723",
+    "docs/references/EROS_v1_1R_Reconstructed_Canonical_Architecture_Owner_Review_2026-10-23.md": "77f439acbaabd1249d9adae268bc0679b2874985499067d66a0a6a2b035f06e7",
+    "docs/references/STAGE2_CHALLENGE_ADDENDUM_2026-10-23.md": "4f29324ab74fdc4a55824c07ef51ed48e29f729e2df08d440b419d7d77c35189",
+    "docs/references/EROS_v1_1R_Reconstructed_OD_01_to_OD_14_Owner_Decision_Sheet_2026-10-23.md": "c28583354d5bfbdde49638ce32bdc793f4412b48153241c8be194ea9d52f1948"
+  },
+  "notes": "Immutable historical owner-direction/baseline bytes; new ADR/decision must create new version, not rewrite."
+}

@@ -1,0 +1,7 @@
+# Advisory until enabled in Settings > Rulesets / Branch protection.
+* @abeselomchernet
+/.github/ @abeselomchernet
+/docs/freeze/ @abeselomchernet
+/docs/adr/ @abeselomchernet
+/docs/architecture/ @abeselomchernet
+/app/ @abeselomchernet

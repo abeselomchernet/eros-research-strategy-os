@@ -1,0 +1,23 @@
+name: EROS Governance CI
+on:
+  push:
+    branches: [main, 'task/**', 'fix/**', 'docs/**']
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  governance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify frozen files and repository admission policy
+        run: python3 scripts/check_governance.py
+      - name: Check Python guard syntax
+        run: python3 -m py_compile scripts/check_governance.py
+# No deployments, provider calls, app tests, elevated permissions or stored credentials.
+# Add isolated audited application test jobs AFTER r2 source admission and offline review.
