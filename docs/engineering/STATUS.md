@@ -1,21 +1,21 @@
 # Engineering Resume Checkpoint
 
 Date: 2026-10-24 (Africa/Nairobi)
-Repository: https://github.com/abeselomchernet/eros-research-strategy-os (verified PRIVATE)
-Branch: task/VS01-001-governance-checkpoint
-Baseline commit: 159794acdb37c38327c74762d2054ffe46a249c9
-Checkpoint commit: use `git log -1 --format=%H -- docs/engineering/STATUS.md` (avoids a self-referential hash).
+Branch: task/VS01-002-source-admission
+Base: f84b50d6e4b719a04cfeef788373f6308e18d44b; PR #2 merged after owner authorization and two green checks.
+Current checkpoint commit: git log -1 --format=%H -- docs/engineering/STATUS.md
+Active issue: #3 / VS01-002. Status: PARTIAL, NOT QUALIFIED, NOT READY TO MERGE.
 
-Completed: cloned the supplied complete-history bundle into a new sibling checkout; verified 25/25 ZIP files byte-for-byte, frozen hashes, expected HEAD and peeled tag; atomically pushed original main and eros-architecture-freeze-2026-10-23-v1. No duplicate freeze commit. Remote refs match. Historical sources remain unchanged.
+Completed: independently reverified r2 archive SHA-256 and 224/224 external-manifest entries. Copied 29 explicitly allowlisted source/migration/UI/contract/test/synthetic-fixture files; excluded 195 archive files including all genuine WDI data, stores, historical evidence, launchers, staged institutional services and stale manifests. R2_SOURCE_ADMISSION.json records source and resulting hashes. Owner Abeselom Chernet confirmed permission for private source copying on 2026-10-24. No public licence inferred.
 
-Fresh tests: bundle verify PASS; starter comparison PASS; scripts/check_governance.py PASS. Hosted governance run 40000890138 now SUCCESS after earlier billing-blocked attempt. No application tests executed in this checkout.
-Evidence: https://github.com/abeselomchernet/eros-research-strategy-os/actions/runs/40000890138
+Transformation: l5_wdi_review.mjs no longer defaults to global fetch; absent transport fails before archive reads. Explicit injected transports remain caller-controlled; this is not a network sandbox. New focused regression checks this default. No acquisition executed.
 
-Controls: private; sole listed collaborator abeselomchernet/admin; Actions default token read, Actions PR approvals disabled; auto-merge false; automatic branch deletion false; dependency vulnerability alerts enabled and verified HTTP 204. Ruleset API returns HTTP 403 requiring plan upgrade. CODEOWNERS and required checks are not claimed as server-enforced. Secret scanning/push protection remain unverified.
+Fresh execution: first lightweight test selection had 11 passes and one missing-fixture failure. Inspected and admitted both synthetic teaching fixtures; rerun 18/18 passed. Final lightweight execution including offline-default regression: 19/19 passed. Imported text normalized to LF with trailing whitespace removed; all resulting hashes updated. Node v22.20.0. No third-party packages installed or copied. No PGlite tests or browser launched.
 
-Manual procedure: engineering changes use ticket branches and PRs. Before merge, owner records review against exact head SHA, confirms fresh successful CI, reviews frozen hash check and changed files, resolves discussions, and explicitly authorizes merge. No routine direct main writes, tag replacement, force pushes, deletion of baseline, automatic merge or product promotion. This procedure is advisory, not equivalent to GitHub enforcement. A PR authored under the owner's account cannot supply an independent review by that same account; record owner decision separately or appoint a qualified reviewer. No additional collaborators authorized here.
+Blocker: available physical memory 724072 KiB (about 707 MiB), below 2048 MiB gate. Do not terminate unrelated processes or lower the gate. Database/recovery qualification pending sufficient capacity.
 
-Files changed: this checkpoint and GITHUB_SETUP.md only. Frozen architecture impact: none.
-Risks/gates: On 2026-10-24, owner Abeselom Chernet explicitly confirmed ownership or permission to copy the r2 application source into this private repository in this engineering chat. This clears that source-ownership gate only; no public licence is granted or invented. Dependency lock records MIT/ISC/Apache-2.0 and dependency notice obligations remain to be checked. Full source confidentiality, dependency notices, network audit and source manifest remain pending. No r2 import commit exists. Genuine WDI is excluded from automatic admission. L4 remains historical accepted baseline; r2 remains unaccepted.
+Remaining source-admission work: minimal pinned dependency package/lock and licence notices; full import/confidentiality review; offline CI extension; disposable synthetic database/API/recovery qualification; complete source-admission PR. Historical 103/103 is not fresh execution. No complete runnable app is claimed: historical browser still expects excluded WDI archive. VS01-004 decision authorization remains unimplemented. Synthetic fixture ownership confirmation is limited to these application fixtures, not actual WDI.
 
-Next one task: after governance PR review and merge, perform VS01-002 selective allowlist admission and fresh offline qualification using the recorded owner permission. Governance checkpoint requires owner review before merge. VS01-003 through VS01-008 not started. Live providers, cloud, D3, AI and release acceptance remain held.
+Files changed: app allowlist, offline-default test, R2_SOURCE_ADMISSION.json, this status. Frozen architecture unchanged. Original projects untouched. Main remains governance-only; no source upload yet. Local scanned patterns found no private-key/GitHub/AWS key matches; this is limited detection, not certification.
+
+Next one task: finish VS01-002 dependency admission and disposable-store qualification once at least 2048 MiB is available. Retain draft status until full evidence and owner review. Live providers, institutional cloud, D3, AI and release acceptance remain held.
