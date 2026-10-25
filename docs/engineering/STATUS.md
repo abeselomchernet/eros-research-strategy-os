@@ -1,6 +1,6 @@
 # Engineering Resume Checkpoint
 
-Date: 2026-10-24 (Africa/Nairobi)
+Date: 2026-10-25 (Africa/Nairobi)
 Branch: task/VS01-002-source-admission
 Base: f84b50d6e4b719a04cfeef788373f6308e18d44b; PR #2 merged after owner authorization and two green checks.
 Current checkpoint commit: git log -1 --format=%H -- docs/engineering/STATUS.md
@@ -14,8 +14,8 @@ Fresh execution: first lightweight test selection had 11 passes and one missing-
 
 Owner exception (2026-10-24): explicitly authorized running on this PC with 1.5 GiB available. Local qualification floor is 1536 MiB; product restore default remains 2048 MiB. Fresh preflight: 1975992 KiB available (about 1.88 GiB). One serial disposable PGlite test PASSED in 6.18 seconds: migrations, stale-write rejection, immutable event history, wrong-project denial, close/reopen persistence, historical revision retention, zero imported sources. Test store removed after close. No unrelated processes stopped. This is not full recovery or browser qualification.
 
-Remaining source-admission work: dependency notice documentation; full import/confidentiality review; offline CI extension; disposable synthetic database/API/recovery qualification; complete source-admission PR. Historical 103/103 is not fresh execution. No complete runnable app is claimed: historical browser still expects excluded WDI archive. VS01-004 decision authorization remains unimplemented. Synthetic fixture ownership confirmation is limited to these application fixtures, not actual WDI.
+Dependency and fixture notices are now recorded in DEPENDENCIES_AND_FIXTURES.md. Offline CI installs the locked dependency with scripts disabled and runs serial synthetic tests. A source manifest verifier checks 29 admitted historical file hashes. A closed-backup test covers open-store rejection, existing-destination rejection and corruption detection. Its interrupted local run is UNVERIFIED, not passed. Current free RAM is 722820 KiB, below the authorized 1536 MiB floor; no new local database process was started. Remaining: hosted CI outcome, full synthetic API/browser and restore qualification, and source-admission review. Historical 103/103 is not fresh execution. No complete runnable app is claimed: historical browser still expects excluded WDI archive. VS01-004 decision authorization remains unimplemented. Synthetic fixture ownership confirmation is limited to these application fixtures, not actual WDI.
 
-Files changed: app allowlist, offline-default and disposable-store tests, minimal package/lock, R2_SOURCE_ADMISSION.json, this status. Frozen architecture unchanged. Original projects untouched. Main remains governance-only; no source upload yet. Local scanned patterns found no private-key/GitHub/AWS key matches; this is limited detection, not certification.
+Files changed: app allowlist, offline-default and disposable-store tests, minimal package/lock, R2_SOURCE_ADMISSION.json, this status. Frozen architecture unchanged. Original projects untouched. Main remains governance-only. This branch is being submitted as a draft source-admission PR, not a qualified application release. Local scanned patterns found no private-key/GitHub/AWS key matches; this is limited detection, not certification.
 
-Next one task: finish VS01-002 notice documentation, offline CI and synthetic API/backup-restore qualification; run one PGlite instance at a time under the owner-authorized 1536 MiB local floor. Retain draft status until full evidence and owner review. Live providers, institutional cloud, D3, AI and release acceptance remain held.
+Next one task: inspect draft source-admission CI, then implement the explicit synthetic API/restore path without claiming synthetic data is WDI; run one PGlite instance at a time under the owner-authorized 1536 MiB local floor. Retain draft status until full evidence and owner review. Live providers, institutional cloud, D3, AI and release acceptance remain held.

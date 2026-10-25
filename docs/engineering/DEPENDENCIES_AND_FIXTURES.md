@@ -1,0 +1,7 @@
+# Admitted dependency and fixture notices
+
+Only @electric-sql/pglite 0.5.10 is installed. Its exact registry integrity is preserved from the verified r2 lockfile in app/package-lock.json. The installed package declares Apache-2.0 and includes LICENSE; preserve its notices when redistributing installed package contents. node_modules is excluded from Git. No dependency code is vendored here. Installing uses npm ci --ignore-scripts --no-audit --no-fund; no install scripts or provider requests are needed. pg, openid-client and playwright-core are not admitted at this stage.
+
+Abeselom Chernet confirmed ownership or permission for private copying of r2 application source on 2026-10-24. This does not grant a public licence or third-party data rights. The two admitted L1 fixtures explicitly say synthetic teaching fixture, use example.invalid URLs, and contain illustrative numbers. They are test inputs only, not observed economic evidence or a complete VS01-005 rights-qualified demonstration.
+
+No real WDI raw or normalized data is included. The retained WDI parsing code is reference-compatible source; its direct capture function requires an explicit injected transport. Default live fetch was removed. Injected functions are trusted test code, not a security sandbox. Historical browser startup still requires excluded WDI archive files. Complete synthetic startup, API/browser qualification and restore integrity must be implemented without mislabelling synthetic data as WDI.
