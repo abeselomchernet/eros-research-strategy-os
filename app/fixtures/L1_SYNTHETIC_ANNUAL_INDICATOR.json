@@ -1,0 +1,13 @@
+{
+  "indicator_uid": "DEMO.GROWTH",
+  "label": "Synthetic growth index",
+  "unit": "index points",
+  "country_iso3": "ETH",
+  "source_title": "Offline synthetic teaching fixture",
+  "source_url": "https://example.invalid/offline-fixture",
+  "source_tier": "T5",
+  "dataset_kind": "synthetic",
+  "source_vintage": "illustrative-v1",
+  "publication_date": "2026-10-20",
+  "csv": "period,value\n2021,78\n2022,81\n2023,NA\n2024,86\n2025,92"
+}

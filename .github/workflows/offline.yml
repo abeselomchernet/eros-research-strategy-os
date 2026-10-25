@@ -1,0 +1,27 @@
+name: EROS Offline Source Qualification
+on:
+  push:
+    branches: [main, 'task/**', 'fix/**']
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  offline-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.20.0'
+      - name: Verify source admission
+        run: python3 scripts/check_source_admission.py
+      - name: Install locked dependency without lifecycle scripts
+        run: npm ci --prefix app --ignore-scripts --no-audit --no-fund
+      - name: Verify dependency lock remains unchanged
+        run: git diff --exit-code -- app/package-lock.json
+      - name: Serial synthetic tests
+        run: npm test --prefix app

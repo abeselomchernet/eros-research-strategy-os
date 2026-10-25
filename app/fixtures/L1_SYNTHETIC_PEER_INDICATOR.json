@@ -1,0 +1,13 @@
+{
+  "indicator_uid": "DEMO.GROWTH",
+  "label": "Synthetic growth index",
+  "unit": "index points",
+  "country_iso3": "KEN",
+  "source_title": "Offline synthetic peer teaching fixture",
+  "source_url": "https://peer.example.invalid/offline-fixture",
+  "source_tier": "T5",
+  "dataset_kind": "synthetic",
+  "source_vintage": "illustrative-peer-v1",
+  "publication_date": "2026-10-20",
+  "csv": "period,value\n2021,65\n2022,NA\n2023,67\n2024,70\n2025,NA"
+}
