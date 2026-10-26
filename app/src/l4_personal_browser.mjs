@@ -9,10 +9,13 @@ import {assertLocalRequest} from './l4_loopback_guard.mjs';
 import {buildVerifiedCatalog} from './l2_source_catalog.mjs';
 import {auditLocalSnapshots} from './l4_snapshot_integrity.mjs';
 import {localBackendRoute} from './local_backend_routes.mjs';
+import {assertSyntheticRecordStore} from './synthetic_record_scope.mjs';
 import {BackendError} from './local_backend.mjs';
 const secret=()=>randomBytes(32).toString('hex');
 const equal=(a,b)=>typeof a==='string'&&typeof b==='string'&&Buffer.byteLength(a)===Buffer.byteLength(b)&&timingSafeEqual(Buffer.from(a),Buffer.from(b));
-export async function startResearchBrowser({directory,archiveRoot=resolve(import.meta.dirname,'..'),port=4084,unlockCode,sessionMs=3600000,captureMode='disabled',captureTransport}){
+export async function startResearchBrowser({directory,archiveRoot=resolve(import.meta.dirname,'..'),port=4084,unlockCode,sessionMs=3600000,captureMode='disabled',captureTransport,dataMode='archived-wdi'}){
+ if(!['archived-wdi','synthetic-records'].includes(dataMode))throw Error('Invalid data mode');
+ if(dataMode==='synthetic-records'&&captureMode!=='disabled')throw Error('Synthetic record mode forbids capture');
  if(!['disabled','fixture'].includes(captureMode))throw Error('Live source acquisition is not supported by this local candidate');
  if(captureMode==='fixture'&&typeof captureTransport!=='function')throw Error('Fixture transport required');
  if(typeof unlockCode!=='string'||unlockCode.length<16)throw Error('Unlock code must contain at least 16 characters');
@@ -25,11 +28,17 @@ export async function startResearchBrowser({directory,archiveRoot=resolve(import
  const sessions=new Map();let consumed=false,attempts=0;
  const assets=new Map([['/',['index.html','text/html']],['/app.js',['app.js','text/javascript']],['/styles.css',['styles.css','text/css']]]);
  try{
-  store=await openLocalResearch(data);await store.importVerifiedWdi(archiveRoot);await store.close();store=null;
-  const integrity=await auditLocalSnapshots(data,archiveRoot);
-  const catalog=await buildVerifiedCatalog(archiveRoot);
-  if(integrity.status!=='PASS')throw Error('Stored source integrity failed; inspect with L4 audit CLI');
+  let integrity,catalog;
   store=await openLocalResearch(data);
+  if(dataMode==='synthetic-records'){
+   integrity=await assertSyntheticRecordStore(store);catalog={indicators:[]};
+  }else{
+   await store.importVerifiedWdi(archiveRoot);await store.close();store=null;
+   integrity=await auditLocalSnapshots(data,archiveRoot);
+   catalog=await buildVerifiedCatalog(archiveRoot);
+   if(integrity.status!=='PASS')throw Error('Stored source integrity failed; inspect with L4 audit CLI');
+   store=await openLocalResearch(data);
+  }
   // Serialize requests because a personal PGlite instance has one database session.
   let pending=Promise.resolve();
   server=http.createServer({requestTimeout:15000,headersTimeout:10000},(req,res)=>{pending=pending.then(()=>handle(req,res)).catch(()=>{if(!res.headersSent)res.writeHead(500);res.end('Local request failed');});});
@@ -65,7 +74,7 @@ export async function startResearchBrowser({directory,archiveRoot=resolve(import
      const projects=await store.listProjects(),recentNotes=[];
      for(const p of projects){const detail=await store.getProject(p.id);for(const n of detail.notes)recentNotes.push({project:p.title,body:n.body.slice(0,180),kind:n.kind,updated_at:n.updated_at});}
      recentNotes.sort((a,b)=>new Date(b.updated_at)-new Date(a.updated_at));
-     return send(200,{projects,recentNotes:recentNotes.slice(0,8),sources:await store.listSources(),integrity,scope:'Personal, local research; source rights pending review; one archived publisher capture'});
+     return send(200,{projects,recentNotes:recentNotes.slice(0,8),sources:await store.listSources(),integrity,scope:dataMode==='synthetic-records'?'Synthetic record workspace; no observed economic data or source capture':'Personal, local research; source rights pending review; one archived publisher capture',data_mode:dataMode});
     }
     if(path==='/api/ontology/indicators'&&req.method==='GET')return send(200,await store.listCanonicalIndicators());
     if(path==='/api/ontology/aliases'&&req.method==='GET'){
