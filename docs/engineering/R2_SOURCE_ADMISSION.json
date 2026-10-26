@@ -25,8 +25,8 @@
       "path": "app/src/local_backup.mjs",
       "source_path": "src/local_backup.mjs",
       "source_sha256": "c157c6e889f27243fa491221490462de06549edc75fb7bdae5dca90899db3374",
-      "import_sha256": "40b4ed2062678cb0a9dc9d2f54f8df731cd43095fc419af4001d85557801b2a5",
-      "transformation": "none; normalize LF and trailing whitespace"
+      "import_sha256": "dcbc0b21c1bc96cfbc0df92d800a8dbf9ad2d6ac0530c4ec4a749386b91157b3",
+      "transformation": "normalize LF and trailing whitespace; add explicit synthetic-record backup and restore mode that omits WDI archive bytes"
     },
     {
       "path": "app/src/l1_indicator_logic.mjs",
@@ -60,8 +60,8 @@
       "path": "app/src/l4_personal_browser.mjs",
       "source_path": "src/l4_personal_browser.mjs",
       "source_sha256": "a873a9f7849b77acd1bdd51fd74687d52fa78ccdffc4bc5ee138322e94234022",
-      "import_sha256": "6e85d59146297943dbf1a3e5d03d183f6c57a403c07969cb2984e9bbf7ba3952",
-      "transformation": "none; normalize LF and trailing whitespace"
+      "import_sha256": "4b49a9533f1830e22f7815a8611967c8f9323b8caefc3d6bee36550971942967",
+      "transformation": "normalize LF and trailing whitespace; add explicit synthetic-record startup mode with source-capture refusal"
     },
     {
       "path": "app/src/l4_snapshot_integrity.mjs",
